@@ -7,30 +7,25 @@
 
 import Foundation
 
-var menu = ""
-var name = ""
-var name2 = ""
-var gd = ""
-var hakjum: Double = 0
-var avgJum: Double = 0
-var count: Int = 0
+var menu: String = ""
+var name: String = ""
+var credit: Double = 0
+var grades: Double = 0
+var final_grade: Double = 0
 var student: [String] = []
 var perGrade: [String] = []
-var grade: [String: Any] = [:]
+var dicGrade: [String: Any] = [:]
 
-struct grade1: Hashable {
-    var name = ""
-    var subject = ""
-    var grade = ""
-}
-
+//반복문 실행
 while true {
     print("원하는 기능을 입력해주세요")
     print("1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료")
     
+    //메뉴선택
     menu = readLine() ?? ""
     myCreditManager()
     
+    //메뉴가 'X'라면
     if menu == "X" {
         break
     }
@@ -38,24 +33,33 @@ while true {
 
 //학생 관리 함수
 func myCreditManager() {
+    
+    //swich 문을 사용해 각 케이스 부여
+    //'X'라는 문자까지 입력 받아야하기 때문에 입력받는 값을 String으로 받음
     switch menu {
     case "1":
         print("추가할 학생의 이름을 입력해주세요.")
+        //학생추가 함수 실행
         addStudent()
     case "2":
         print("삭제할 학생의 이름을 입력해주세요")
+        //학생삭제 함수 실행
         deleteStudent()
     case "3":
         print("성적을 추가할 학생의 이름, 과목이름, 성적(A+, A, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.\n입력예) Mickey Swift A+\n만약에 학생의 석정 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.")
+        //성적추가 함수 실행
         addGrade()
     case "4":
         print("성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.")
+        //성적삭제 함수 실행
         deleteGrade()
     case "5":
         print("평점을 알고싶은 학생의 이름을 입력해주세요.")
-        avgGrade()
+        //평점보기 함수 실행
+        avgGrades()
     case "X":
-        exit()
+        //종료함수 실행
+        theEnd()
         break
     default:
         print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요.")
@@ -64,6 +68,7 @@ func myCreditManager() {
 
 //학생추가 함수
 func addStudent() {
+    //학생이름 입력받기
     name = readLine() ?? ""
     
     if name == "" {
@@ -74,11 +79,11 @@ func addStudent() {
         print("\(name) 학생을 추가했습니다.")
         student.append(name)
     }
-    
 }
 
 //학생삭제 함수
 func deleteStudent() {
+    //학생이름 입력받기
     name = readLine() ?? ""
     
     if name == "" {
@@ -95,18 +100,29 @@ func deleteStudent() {
 
 //성적추가 함수
 func addGrade() {
+    //학생의 이름, 과목, 성적 입력받기
     name = readLine() ?? ""
+    //이름, 과목, 성적을 공백(띄어쓰기) 기준으로 배열에 담기
     perGrade = name.components(separatedBy: " ")
     
+    //배열의 길이가 1이 아니라면(길이가 1이라면 이름만 받은 것!(오류발생))
     if perGrade.count != 1 {
+        //배열의 길이가 2가 아니라면(길이가 2라면 이름, 과목까지 받은 것!(오류발생))
         if perGrade.count != 2 {
+            //배열의 길이가 마침내 3이라면(길이가 3이라면 이름, 과목, 성적 모두 받은 것!(성공))
             if perGrade.count == 3 {
+                //배열의 길이가 3이지만 없는 학생이라면?
                 if !student.contains(perGrade[0]) {
                     print("\(perGrade[0]) 학생은 존재하지 않으므로 성적을 추가할 수 없습니다.")
-                } else {
+                }
+                //그렇지 않고 추가된 학생이라면 성공
+                else {
                     print("\(perGrade[0]) 학생의 \(perGrade[1]) 과목이 \(perGrade[2])로 추가(변경) 되었습니다.")
-                    grade[perGrade[0] + " " + perGrade[1]] = perGrade[2]
-                    print(grade)
+                    //성적 딕셔너리에 ["학생 과목": "성적"] 순으로 추가해준다.
+                    dicGrade[perGrade[0] + " " + perGrade[1]] = perGrade[2]
+                    //성적 딕셔너리를 확인해보기 위해 출력!
+                    print(dicGrade)
+                    //개인성적은 다시 초기화를 시켜준다.
                     perGrade = []
                 }
             } else {
@@ -130,8 +146,8 @@ func deleteGrade() {
             print("\(perGrade[0]) 학생을 찾지 못했습니다.")
         } else if perGrade.count == 2 {
             print("\(perGrade[0]) 학생의 \(perGrade[1]) 과목의 성적이 삭제되었습니다.")
-            grade.removeValue(forKey: perGrade[0] + " " + perGrade[1])
-            print(grade)
+            dicGrade.removeValue(forKey: perGrade[0] + " " + perGrade[1])
+            print(dicGrade)
             perGrade = []
         } else {
             print("입력이 잘못되었습니다. 다시 확인해주세요.")
@@ -142,57 +158,68 @@ func deleteGrade() {
 }
 
 //평점보기 함수
-func avgGrade() {
+func avgGrades() {
+    //학생 이름을 입력받고
     name = readLine() ?? ""
     
-    let name2 = grade.filter { $0.key.contains(name) }  //딕셔너리
-    let name3 = Array(name2.keys)   // 배열
-    let name4 = Array(name2.values) // 배열
-//    print(name2) //현재 입력되어 있는 성적들이 궁금하다면 출력
+    //해당 학생 이름이 포함된 모든 과목을 가져온다 ex) RB Swift, RB C, RB Java ...
+    let filter_name = dicGrade.filter { $0.key.contains(name) }  //딕셔너리
+    //가져온 과목의 keys 값을 배열에 담는다.
+    let filter_name_keys = Array(filter_name.keys)   // 배열
+    //가져온 과목의 values 값을 배열에 담는다.
+    let filter_name_values = Array(filter_name.values) // 배열
+    //    print(filter_name) //현재 입력되어 있는 성적들이 궁금하다면 출력
     
-    for i in 0..<name3.count {
-        let startIndex = name3[i].index(name3[i].startIndex, offsetBy: name2.count)// 사용자지정 시작인덱스
-        let endIndex = name3[i].index(name3[i].startIndex, offsetBy: name3[i].count)
-        let name5 = name3[i]
-        let sliced_name = name5[startIndex ..< endIndex]
+    //해당 학생의 ex) ["RB Swift", "RB C", "RB Java"] "이름 과목" 값에서 과목만을 가져오기 위한 반복문 실행
+    for i in 0..<filter_name.count {
+        //시작 인덱스는 '입력받은 학생의 이름 길이' 다음 인덱스부터 시작 ex) RB Swift -> 'RB '을 지나 S부터 시작
+        let startIndex = filter_name_keys[i].index(filter_name_keys[i].startIndex, offsetBy: name.count + 1)
+        //끝 인덱스는 filter_name_keys[i]의 길이까지
+        let endIndex = filter_name_keys[i].index(filter_name_keys[i].startIndex, offsetBy: filter_name_keys[i].count)
+        //filter_subject 상수에 filter_name_keys[i] 배열 대입
+        let filter_subject = filter_name_keys[i]
+        //sliced_subject 상수에 filter_subject에서 잘려 남음 '과목 값'을 대입
+        let sliced_subject = filter_subject[startIndex ..< endIndex]
         
-        print("\(sliced_name):", terminator: " ")
-        print(name4[i])
+        print("\(sliced_subject):", terminator: " ")
+        print(filter_name_values[i])
         
-        gradeCaculator(gd: name4[i] as! String, count: name3.count)
+        //평점계산 함수 실행
+        gradeCaculator(subGrade: filter_name_values[i] as! String)
+        grades = credit / Double(filter_name.count)
+        final_grade = round(grades * 100) / 100
     }
+    print("평점 : \(final_grade)")
+    grades = 0.0
     
-    avgJum = hakjum / Double(name3.count)
-    let str = String(format: "%.2f", avgJum)
-    print("평점 : \(str)")
+}
+
+//평점계산 함수 -> subGrade를 매개변수로 받으며 최종평점을 Double 값으로 return 한다.
+func gradeCaculator(subGrade: String) -> Double {
     
+    if subGrade == "A+" {
+        credit += 4.5
+    } else if subGrade == "A" {
+        credit += 4.0
+    } else if subGrade == "B+" {
+        credit += 3.5
+    } else if subGrade == "B" {
+        credit += 3.0
+    } else if subGrade == "C+" {
+        credit += 2.5
+    } else if subGrade == "C" {
+        credit += 2.0
+    } else if subGrade == "D+" {
+        credit += 1.5
+    } else if subGrade == "D" {
+        credit += 1.0
+    } else {
+        credit += 0
+    }
+    return credit
 }
 
 //종료 함수
-func exit() {
+func theEnd() {
     print("프로그램을 종료합니다...")
-}
-
-func gradeCaculator(gd: String, count: Int) -> Double {
-    if gd == "A+" {
-        hakjum += 4.5
-    } else if gd == "A" {
-        hakjum += 4.0
-    } else if gd == "B+" {
-        hakjum += 3.5
-    } else if gd == "B" {
-        hakjum += 3.0
-    } else if gd == "C+" {
-        hakjum += 2.5
-    } else if gd == "C" {
-        hakjum += 2.0
-    } else if gd == "D+" {
-        hakjum += 1.5
-    } else if gd == "D" {
-        hakjum += 1.0
-    } else {
-        hakjum += 0
-    }
-    
-    return hakjum
 }
