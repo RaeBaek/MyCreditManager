@@ -9,9 +9,6 @@ import Foundation
 
 var menu: String = ""
 var name: String = ""
-var credit: Double = 0
-var grades: Double = 0
-var final_grade: Double = 0
 var student: [String] = []
 var perGrade: [String] = []
 var dicGrade: [String: Any] = [:]
@@ -83,7 +80,6 @@ func addStudent() {
 
 //학생삭제 함수
 func deleteStudent() {
-    //학생이름 입력받기
     name = readLine() ?? ""
     
     if name == "" {
@@ -159,8 +155,9 @@ func deleteGrade() {
 
 //평점보기 함수
 func avgGrades() {
-    //학생 이름을 입력받고
     name = readLine() ?? ""
+    var grades: Double = 0
+    var final_grade: Double = 0
     
     //해당 학생 이름이 포함된 모든 과목을 가져온다 ex) RB Swift, RB C, RB Java ...
     let filter_name = dicGrade.filter { $0.key.contains(name) }  //딕셔너리
@@ -168,7 +165,7 @@ func avgGrades() {
     let filter_name_keys = Array(filter_name.keys)   // 배열
     //가져온 과목의 values 값을 배열에 담는다.
     let filter_name_values = Array(filter_name.values) // 배열
-    //    print(filter_name) //현재 입력되어 있는 성적들이 궁금하다면 출력
+//    print(filter_name) //현재 입력되어 있는 성적들이 궁금하다면 출력
     
     //해당 학생의 ex) ["RB Swift", "RB C", "RB Java"] "이름 과목" 값에서 과목만을 가져오기 위한 반복문 실행
     for i in 0..<filter_name.count {
@@ -185,17 +182,19 @@ func avgGrades() {
         print(filter_name_values[i])
         
         //평점계산 함수 실행
-        gradeCaculator(subGrade: filter_name_values[i] as! String)
-        grades = credit / Double(filter_name.count)
-        final_grade = round(grades * 100) / 100
+        let credit = gradeCaculator(subGrade: filter_name_values[i] as! String) //반환값을 credit에 대입
+        grades += credit                                                        //그 값을 grades 변수에 대입
     }
-    print("평점 : \(final_grade)")
-    grades = 0.0
+    grades /= Double(filter_name.count)         // 모두 합쳐진 grades 값을 과목 수로 나누고
+    final_grade = round(grades * 100) / 100     // 최종학점에 소수점 둘째 자리까지 표현
+    print("평점 : \(final_grade)")               // 최종학점(평점) 출력
+    grades = 0                                  // 다음 학생의 평점 조회를 위해 0으로 초기화
     
 }
 
 //평점계산 함수 -> subGrade를 매개변수로 받으며 최종평점을 Double 값으로 return 한다.
 func gradeCaculator(subGrade: String) -> Double {
+    var credit: Double = 0
     
     if subGrade == "A+" {
         credit += 4.5
