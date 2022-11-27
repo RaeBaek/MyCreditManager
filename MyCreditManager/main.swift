@@ -30,7 +30,6 @@ while true {
 
 //학생 관리 함수
 func myCreditManager() {
-    
     //swich 문을 사용해 각 케이스 부여
     //'X'라는 문자까지 입력 받아야하기 때문에 입력받는 값을 String으로 받음
     switch menu {
@@ -114,22 +113,13 @@ func addGrade() {
                 //그렇지 않고 추가된 학생이라면 성공
                 else {
                     print("\(perGrade[0]) 학생의 \(perGrade[1]) 과목이 \(perGrade[2])로 추가(변경) 되었습니다.")
-                    //성적 딕셔너리에 ["학생 과목": "성적"] 순으로 추가해준다.
-                    dicGrade[perGrade[0] + " " + perGrade[1]] = perGrade[2]
-                    //성적 딕셔너리를 확인해보기 위해 출력!
-                    print(dicGrade)
-                    //개인성적은 다시 초기화를 시켜준다.
-                    perGrade = []
+                    dicGrade[perGrade[0] + " " + perGrade[1]] = perGrade[2] //성적 딕셔너리에 ["학생 과목": "성적"] 순으로 추가해준다.
+//                    print(dicGrade)                                         //성적 딕셔너리를 확인해보고 싶다면 출력
+                    perGrade = []                                           //개인성적은 다시 초기화
                 }
-            } else {
-                print("입력이 잘못되었습니다. 다시 확인해주세요.")
-            }
-        } else {
-            print("입력이 잘못되었습니다. 다시 확인해주세요.")
-        }
-    } else {
-        print("입력이 잘못되었습니다. 다시 확인해주세요.")
-    }
+            } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
+        } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
+    } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
 }
 
 //성적삭제 함수
@@ -145,12 +135,8 @@ func deleteGrade() {
             dicGrade.removeValue(forKey: perGrade[0] + " " + perGrade[1])
             print(dicGrade)
             perGrade = []
-        } else {
-            print("입력이 잘못되었습니다. 다시 확인해주세요.")
-        }
-    } else {
-        print("입력이 잘못되었습니다. 다시 확인해주세요.")
-    }
+        } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
+    } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
 }
 
 //평점보기 함수
