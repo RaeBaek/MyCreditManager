@@ -71,7 +71,7 @@ func addStudent() {
         print("입력이 잘못되었습니다. 다시 확인해주세요.")
     } else if student.contains(name) == true {
         print("\(name)은(는) 이미 존재하는 학생입니다. 추가하지 않습니다.")
-    } else if student.contains(name) == false {
+    } else {
         print("\(name) 학생을 추가했습니다.")
         student.append(name)
     }
@@ -88,7 +88,7 @@ func deleteStudent() {
         if let index = student.firstIndex(of: "\(name)") {
             student.remove(at: index)
         }
-    } else if student.contains(name) == false {
+    } else {
         print("\(name) 학생을 핮지 못했습니다.")
     }
 }
@@ -114,7 +114,7 @@ func addGrade() {
                 else {
                     print("\(perGrade[0]) 학생의 \(perGrade[1]) 과목이 \(perGrade[2])로 추가(변경) 되었습니다.")
                     dicGrade[perGrade[0] + " " + perGrade[1]] = perGrade[2] //성적 딕셔너리에 ["학생 과목": "성적"] 순으로 추가해준다.
-//                    print(dicGrade)                                         //성적 딕셔너리를 확인해보고 싶다면 출력
+//                    print(dicGrade)                                       //성적 딕셔너리를 확인해보고 싶다면 출력
                     perGrade = []                                           //개인성적은 다시 초기화
                 }
             } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
@@ -133,8 +133,8 @@ func deleteGrade() {
         } else if perGrade.count == 2 {
             print("\(perGrade[0]) 학생의 \(perGrade[1]) 과목의 성적이 삭제되었습니다.")
             dicGrade.removeValue(forKey: perGrade[0] + " " + perGrade[1])
-            print(dicGrade)
-            perGrade = []
+//            print(dicGrade)   //삭제가 정상적으로 되었는지 확인해보고 싶다면 출력
+            perGrade = []       //개인성적 초기화
         } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
     } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
 }
@@ -148,12 +148,12 @@ func avgGrades() {
     //해당 학생 이름이 포함된 모든 과목을 가져온다 ex) RB Swift, RB C, RB Java ...
     let filter_name = dicGrade.filter { $0.key.contains(name) }  //딕셔너리
     //가져온 과목의 keys 값을 배열에 담는다.
-    let filter_name_keys = Array(filter_name.keys)   // 배열
+    let filter_name_keys = Array(filter_name.keys)               // 배열
     //가져온 과목의 values 값을 배열에 담는다.
-    let filter_name_values = Array(filter_name.values) // 배열
+    let filter_name_values = Array(filter_name.values)           // 배열
 //    print(filter_name) //현재 입력되어 있는 성적들이 궁금하다면 출력
     
-    //해당 학생의 ex) ["RB Swift", "RB C", "RB Java"] "이름 과목" 값에서 과목만을 가져오기 위한 반복문 실행
+    //해당 학생의 ex) ["RB Swift", "RB C", "RB Java"] "이름 과목" 값에서 '과목'만을 가져오기 위한 반복문 실행
     for i in 0..<filter_name.count {
         //시작 인덱스는 '입력받은 학생의 이름 길이' 다음 인덱스부터 시작 ex) RB Swift -> 'RB '을 지나 S부터 시작
         let startIndex = filter_name_keys[i].index(filter_name_keys[i].startIndex, offsetBy: name.count + 1)
@@ -161,7 +161,7 @@ func avgGrades() {
         let endIndex = filter_name_keys[i].index(filter_name_keys[i].startIndex, offsetBy: filter_name_keys[i].count)
         //filter_subject 상수에 filter_name_keys[i] 배열 대입
         let filter_subject = filter_name_keys[i]
-        //sliced_subject 상수에 filter_subject에서 잘려 남음 '과목 값'을 대입
+        //sliced_subject 상수에 filter_subject에서 인덱스 만큼 자르고 남은 '과목 값'을 대입
         let sliced_subject = filter_subject[startIndex ..< endIndex]
         
         print("\(sliced_subject):", terminator: " ")
