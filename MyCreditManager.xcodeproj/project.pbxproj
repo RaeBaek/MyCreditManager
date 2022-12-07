@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		14474776292DDE3100ADDB37 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14474775292DDE3100ADDB37 /* main.swift */; };
+		146974CD2940805600A606B9 /* ProgramMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974CC2940805600A606B9 /* ProgramMenu.swift */; };
+		146974CF2940816F00A606B9 /* AddStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974CE2940816F00A606B9 /* AddStudent.swift */; };
+		146974D12940817B00A606B9 /* DeleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974D02940817B00A606B9 /* DeleteStudent.swift */; };
+		146974D4294081C200A606B9 /* AddGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974D3294081C200A606B9 /* AddGrade.swift */; };
+		146974D6294081CB00A606B9 /* DeleteGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974D5294081CB00A606B9 /* DeleteGrade.swift */; };
+		146974D8294081D800A606B9 /* AverageGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974D7294081D800A606B9 /* AverageGrades.swift */; };
+		146974DA294084B400A606B9 /* GradeCaculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974D9294084B400A606B9 /* GradeCaculator.swift */; };
+		146974DC2940856000A606B9 /* TheEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974DB2940856000A606B9 /* TheEnd.swift */; };
+		146974DE294091CC00A606B9 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974DD294091CC00A606B9 /* Info.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +35,15 @@
 		14167D8B2934627900236E47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14474772292DDE3100ADDB37 /* MyCreditManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MyCreditManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		14474775292DDE3100ADDB37 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		146974CC2940805600A606B9 /* ProgramMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramMenu.swift; sourceTree = "<group>"; };
+		146974CE2940816F00A606B9 /* AddStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudent.swift; sourceTree = "<group>"; };
+		146974D02940817B00A606B9 /* DeleteStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStudent.swift; sourceTree = "<group>"; };
+		146974D3294081C200A606B9 /* AddGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGrade.swift; sourceTree = "<group>"; };
+		146974D5294081CB00A606B9 /* DeleteGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGrade.swift; sourceTree = "<group>"; };
+		146974D7294081D800A606B9 /* AverageGrades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageGrades.swift; sourceTree = "<group>"; };
+		146974D9294084B400A606B9 /* GradeCaculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCaculator.swift; sourceTree = "<group>"; };
+		146974DB2940856000A606B9 /* TheEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheEnd.swift; sourceTree = "<group>"; };
+		146974DD294091CC00A606B9 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +78,25 @@
 			isa = PBXGroup;
 			children = (
 				14474775292DDE3100ADDB37 /* main.swift */,
+				146974DD294091CC00A606B9 /* Info.swift */,
+				146974CC2940805600A606B9 /* ProgramMenu.swift */,
+				146974D2294081A100A606B9 /* Functions */,
 			);
 			path = MyCreditManager;
+			sourceTree = "<group>";
+		};
+		146974D2294081A100A606B9 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				146974CE2940816F00A606B9 /* AddStudent.swift */,
+				146974D02940817B00A606B9 /* DeleteStudent.swift */,
+				146974D3294081C200A606B9 /* AddGrade.swift */,
+				146974D5294081CB00A606B9 /* DeleteGrade.swift */,
+				146974D7294081D800A606B9 /* AverageGrades.swift */,
+				146974D9294084B400A606B9 /* GradeCaculator.swift */,
+				146974DB2940856000A606B9 /* TheEnd.swift */,
+			);
+			path = Functions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,7 +157,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				146974DA294084B400A606B9 /* GradeCaculator.swift in Sources */,
+				146974D8294081D800A606B9 /* AverageGrades.swift in Sources */,
+				146974D6294081CB00A606B9 /* DeleteGrade.swift in Sources */,
+				146974DE294091CC00A606B9 /* Info.swift in Sources */,
+				146974D12940817B00A606B9 /* DeleteStudent.swift in Sources */,
 				14474776292DDE3100ADDB37 /* main.swift in Sources */,
+				146974D4294081C200A606B9 /* AddGrade.swift in Sources */,
+				146974CD2940805600A606B9 /* ProgramMenu.swift in Sources */,
+				146974DC2940856000A606B9 /* TheEnd.swift in Sources */,
+				146974CF2940816F00A606B9 /* AddStudent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
