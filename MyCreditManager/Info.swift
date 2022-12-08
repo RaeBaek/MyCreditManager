@@ -12,5 +12,5 @@ struct Info {
     var name: String = ""
     var students: [String] = []
     var gradeArray: [String] = []
-    var gradeDictionary: [String: Any] = [:]
+    var gradeDictionary: Dictionary<String, Any> = Dictionary<String, Any>()
 }

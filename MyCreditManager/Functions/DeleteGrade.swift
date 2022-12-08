@@ -8,15 +8,13 @@
 import Foundation
 
 class DeleteGrade {
-    var name = info.name
-    var students = info.students
-    var gradeArray = info.gradeArray
-    var gradeDictionary = info.gradeDictionary
-    
     //성적삭제 함수
-    func deleteGrade() {
-        name = readLine() ?? ""
-        gradeArray = name.components(separatedBy: " ")
+    func deleteGrade(studentGrade: String) -> Dictionary<String, Any> {
+        let students = info.students
+        var gradeArray = info.gradeArray
+        var gradeDictionary = info.gradeDictionary
+        
+        gradeArray = studentGrade.components(separatedBy: " ")
         
         if gradeArray.count > 1 {
             if gradeArray.count == 2 {
@@ -30,5 +28,6 @@ class DeleteGrade {
                 }
             } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
         } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
+        return gradeDictionary
     }
 }

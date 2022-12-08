@@ -10,14 +10,11 @@ import Foundation
 var gradeCaculator = GradeCaculator()
 
 class AverageGrade {
-    var name = info.name
-    var students = info.students
-    var gradeArray = info.gradeArray
-    var gradeDictionary = info.gradeDictionary
-    
     //평점보기 함수
-    func averageGrades() {
-        name = readLine() ?? ""
+    func averageGrades(name: String) {
+        let students = info.students
+        let gradeDictionary = info.gradeDictionary
+        
         var totalGrade: Double = 0
         var finalGrade: Double = 0
         

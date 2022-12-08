@@ -17,6 +17,7 @@
 		146974DA294084B400A606B9 /* GradeCaculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974D9294084B400A606B9 /* GradeCaculator.swift */; };
 		146974DC2940856000A606B9 /* TheEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974DB2940856000A606B9 /* TheEnd.swift */; };
 		146974DE294091CC00A606B9 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974DD294091CC00A606B9 /* Info.swift */; };
+		146974E02940D8F500A606B9 /* WantFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146974DF2940D8F500A606B9 /* WantFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +45,7 @@
 		146974D9294084B400A606B9 /* GradeCaculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCaculator.swift; sourceTree = "<group>"; };
 		146974DB2940856000A606B9 /* TheEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheEnd.swift; sourceTree = "<group>"; };
 		146974DD294091CC00A606B9 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		146974DF2940D8F500A606B9 /* WantFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WantFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				14474775292DDE3100ADDB37 /* main.swift */,
 				146974DD294091CC00A606B9 /* Info.swift */,
+				146974DF2940D8F500A606B9 /* WantFunctions.swift */,
 				146974CC2940805600A606B9 /* ProgramMenu.swift */,
 				146974D2294081A100A606B9 /* Functions */,
 			);
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				146974DA294084B400A606B9 /* GradeCaculator.swift in Sources */,
+				146974E02940D8F500A606B9 /* WantFunctions.swift in Sources */,
 				146974D8294081D800A606B9 /* AverageGrades.swift in Sources */,
 				146974D6294081CB00A606B9 /* DeleteGrade.swift in Sources */,
 				146974DE294091CC00A606B9 /* Info.swift in Sources */,

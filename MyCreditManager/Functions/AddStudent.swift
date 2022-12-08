@@ -9,13 +9,8 @@ import Foundation
 
 class AddStudent {
     //학생추가 함수
-    func addStudent() {
-        var name = info.name
+    func addStudent(name: String) -> Array<String> {
         var students = info.students
-        
-        //학생이름 입력받기
-        name = readLine() ?? ""
-        
         if name == "" {
             print("입력이 잘못되었습니다. 다시 확인해주세요.")
         } else if students.contains(name) {
@@ -24,5 +19,6 @@ class AddStudent {
             print("\(name) 학생을 추가했습니다.")
             students.append(name)
         }
+        return students
     }
 }

@@ -9,16 +9,13 @@ import Foundation
 
 class AddGrade {
     //성적추가 함수
-    func addGrade() {
-        var name = info.name
-        var students = info.students
+    func addGrade(studentGrade: String) -> Dictionary<String, Any> {
+        let students = info.students
         var gradeArray = info.gradeArray
         var gradeDictionary = info.gradeDictionary
         
-        //학생의 이름, 과목, 성적 입력받기
-        name = readLine() ?? ""
         //이름, 과목, 성적을 공백(띄어쓰기) 기준으로 배열에 담기
-        gradeArray = name.components(separatedBy: " ")
+        gradeArray = studentGrade.components(separatedBy: " ")
         
         //배열의 길이가 1보다 커야함 (길이가 1보다 작거나 같으면 공백이거나 이름만 받은 것 (오류발생))
         if gradeArray.count > 1 {
@@ -38,5 +35,6 @@ class AddGrade {
                 } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
             } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
         } else { print("입력이 잘못되었습니다. 다시 확인해주세요.") }
+        return gradeDictionary
     }
 }
